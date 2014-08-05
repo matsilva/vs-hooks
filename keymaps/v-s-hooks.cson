@@ -10,8 +10,10 @@
 '.workspace':
   'ctrl-alt-shift-b': 'VSHooks:build'
   'ctrl-alt-shift-r': 'VSHooks:run'
-  'ctrl-alt-shift-d': 'VSHooks:commit'
+  'ctrl-alt-shift-u': 'VSHooks:update'
+  'ctrl-alt-shift-c': 'VSHooks:commit'
 '.editor':
   'ctrl-alt-shift-b': 'VSHooks:build'
   'ctrl-alt-shift-r': 'VSHooks:run'
-  'ctrl-alt-shift-d': 'VSHooks:commit'
+  'ctrl-alt-shift-u': 'VSHooks:update'
+  'ctrl-alt-shift-c': 'VSHooks:commit'

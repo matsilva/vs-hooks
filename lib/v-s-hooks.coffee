@@ -35,6 +35,7 @@ module.exports =
     atom.workspaceView.command "VSHooks:build", => @build()
     atom.workspaceView.command "VSHooks:run", => @run()
     atom.workspaceView.command "VSHooks:commit", => @commit()
+    atom.workspaceView.command "VSHooks:update", => @update()
 
   build: ->
     goGetProject (projFile) ->
@@ -74,6 +75,19 @@ module.exports =
   commit: ->
     console.log basePath
     runCmds = exec 'TortoiseProc /command:commit /path:"' + basePath + '"'
+
+    runCmds.stdout.on "data", (data) ->
+      console.log "stdout: " + data
+
+    runCmds.stderr.on "data", (data) ->
+      console.log "stderr: " + data
+
+    runCmds.on "close", (code) ->
+      console.log "child process exited with code " + code
+
+  update: ->
+    console.log basePath
+    runCmds = exec 'TortoiseProc /command:update /path:"' + basePath + '"'
 
     runCmds.stdout.on "data", (data) ->
       console.log "stdout: " + data

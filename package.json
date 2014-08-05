@@ -2,10 +2,10 @@
   "name": "VShooks",
   "main": "./lib/v-s-hooks",
   "version": "0.0.1",
-  "description": "A short description of your package",
-  "activationEvents": ["VSHooks:build", "VSHooks:run", "VSHooks:commit"],
-  "repository": "https://github.com/atom/v-s-hooks",
-  "license": "MIT",
+  "description": "Visual Studio commands to run and build your solutions. Tortoise SVN commands as well :)",
+  "activationEvents": ["VSHooks:build", "VSHooks:run", "VSHooks:commit", "VSHooks:update"],
+  "repository": "https://github.com/matsilva/vs-hooks",
+  "license": "GNU",
   "engines": {
     "atom": ">0.50.0"
   },
