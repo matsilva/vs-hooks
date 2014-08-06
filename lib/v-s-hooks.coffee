@@ -5,25 +5,30 @@ path = require 'path'
 util = require 'util'
 
 editorPath = atom.project.path
-basePath = path.dirname editorPath
-basePathArray = basePath.split('/');
-basePath = basePathArray.pop();
+basePath = editorPath
+basePathArray = basePath.split('\\');
 projectFile = '';
+gotit = false;
 
 getProject = (sln) ->
   if /.*\.sln$/g.test(sln)
     projectFile = path.resolve basePath, sln
+    gotit = true
 
-goGetProject = (callback) ->
+goGetProject = (callback, next) ->
   fs.readdir basePath, (err, files) ->
     if err
       console.log(err)
-    gotit = getProject sln for sln in files
-
-    if projectFile.length > 1
-      callback projectFile
+    getProject sln for sln in files
+    if gotit
+      return callback projectFile
     else
-      callback false
+      if next
+        return callback false
+      basePathArray.pop();
+      basePath = basePathArray.join '\\'
+      return goGetProject callback, false
+
 
 # C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\devenv.exe
 # C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe
